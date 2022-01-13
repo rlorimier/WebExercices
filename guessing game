@@ -1,0 +1,25 @@
+from random import randint
+cont = 0
+stop = False
+comp = randint(1, 10)
+print("I'm thinking in a number between 1 and 9, can you guess which one it is? ")
+user = int(input("Type your answer: "))
+while stop != True:
+    if comp == user:
+        print("You got it correctly!")
+        again = str(input("Do you want to play again [S/N]? ")).lower().strip()
+        if again == "n":
+            stop = True
+        if again == "s":
+            comp = randint(1, 10)
+            print("I just thought in another number between 1 and 9, can you guess which one it is? ")
+            user = int(input("Type your answer: "))
+    elif comp > user:
+        print("You guessed wrong, my number is higher.")
+        user = int(input("Please, try again: "))
+    elif comp < user:
+        print("You guessed wrong, my number is lower.")
+        user = int(input("Please, try again: "))
+    cont += 1
+print(f"You've tried to guess {cont} times.")
+print("\33[31m=== GAME OVER ===\33[m")
